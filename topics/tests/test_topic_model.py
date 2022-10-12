@@ -1,6 +1,6 @@
 import pytest
 
-from topics.models import Topic
+from topics.models import Topics
 
 
 @pytest.fixture()
