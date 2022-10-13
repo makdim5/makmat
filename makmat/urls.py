@@ -1,12 +1,8 @@
-from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import path, include
 
-from topics.views import *
+from courses.views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path("", include("topics.urls")),
+    path("courses/", include("courses.urls"), name="courses"),
 ]
-
-handler404 = page_not_found
-

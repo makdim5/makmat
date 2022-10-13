@@ -8,6 +8,8 @@ django = "*"
 django-ckeditor = "*"
 pytest = "*"
 python-decouple = "*"
+requests = "*"
+djangorestframework = "*"
 
 [dev-packages]
 
