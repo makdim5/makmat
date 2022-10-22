@@ -3,7 +3,7 @@ from rest_framework import routers
 
 from userswork import views
 
-router = routers.SimpleRouter()
+router = routers.DefaultRouter()
 router.register(r'', views.UsersViewSet)
 
 
