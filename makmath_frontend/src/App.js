@@ -14,8 +14,8 @@ function App() {
             <Router>
 
                 <Routes>
-                    <Route path="/home" element={<HomePage/>}/>
-                    <Route path="/" element={<AuthorizationPage/>}/>
+                    <Route path="/" element={<HomePage/>}/>
+                    <Route path="/login" element={<AuthorizationPage/>}/>
                 </Routes>
 
             </Router>

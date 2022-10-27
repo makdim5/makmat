@@ -2,6 +2,8 @@ import React from 'react';
 import cl from "./HomePage.module.css"
 import {AppBar, Button, Toolbar, Typography} from "@mui/material";
 import { Link as RouterLink } from "react-router-dom";
+import Header from "../../components/Header/Header";
+import FeatureScene from "../../components/FeatureScene/FeatureScene";
 
 
 const HomePage = () => {
@@ -37,18 +39,22 @@ const HomePage = () => {
 
     return (
         <div className={cl.home_body}>
-            <AppBar >
-                <Toolbar>
-                    <Typography variant="h6" component="h1">
-                        MakMath 2.0
-                        {getMenuButtons()}
-                    </Typography>
-                </Toolbar>
-            </AppBar>
 
-            <div style={{backgroundColor:"white"}}>
-                Главная
+            <Header></Header>
+
+            <div style={{height:1500}}></div>
+
+            <div className={cl.features}>
+                <FeatureScene></FeatureScene>
+
+                <FeatureScene></FeatureScene>
+
+                <FeatureScene></FeatureScene>
+
+                <FeatureScene></FeatureScene>
             </div>
+
+
         </div>
     );
 };

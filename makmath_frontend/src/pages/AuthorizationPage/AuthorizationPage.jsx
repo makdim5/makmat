@@ -58,7 +58,7 @@ const AuthorizationPage = () => {
                             .then((res) => {
                                 if (res.status === 202){
                                     alert("Вы вошли успешно!")
-                                    window.location.href = "/home"
+                                    window.location.href = "/"
                                 }
                             })
                             .catch((ex) => {

@@ -2,11 +2,20 @@
     min-width: 100%;
     min-height: 100%;
     position: relative;
-
     display: flex;
     justify-content: center;
     align-items: center;
+    /*background: rgb(11,48,105);*/
+    /*background: linear-gradient(118deg, rgba(11,48,105,1) 0%, rgba(72,195,241,1) 52%, rgba(0,255,191,1) 88%);*/
     background-image: url("background.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.features{
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: ease 0.5s
 }

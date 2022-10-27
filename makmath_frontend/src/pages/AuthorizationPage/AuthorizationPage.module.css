@@ -15,7 +15,9 @@
     box-shadow: 18px 5px 25px 14px rgba(0, 0, 0, 0.31);
     -webkit-box-shadow: 18px 5px 25px 14px rgba(0, 0, 0, 0.31);
     -moz-box-shadow: 18px 5px 25px 14px rgba(0, 0, 0, 0.31);
-    background-color: white;
+    background: rgba(255, 255, 255, .8);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     border: 2px solid #216ABC;
     padding: 20px;
     min-height: 350px;
@@ -51,4 +53,19 @@
     flex-direction: column;
 }
 
+@keyframes anim {
+    0% {
+        transform: scale(0, .025);
+    }
+    50% {
+        transform: scale(1, .025);
+    }
+}
 
+@media (prefers-reduced-motion: no-preference) {
+    .area {
+        animation: anim 0.5s 1;
+    }
+
+
+}
