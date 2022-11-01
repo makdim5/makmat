@@ -46,12 +46,18 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",
+    "rest_framework_simplejwt.token_blacklist",
+    'rest_framework.authtoken',
     'ckeditor',
     'corsheaders',
     'courses',
     'userswork'
 
 ]
+
+ROTATE_REFRESH_TOKENS = True
+
+BLACKLIST_AFTER_ROTATION = True
 
 CORS_ORIGIN_WHITELIST = (
     'http://localhost:3000',

@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib.auth import login, logout
 from rest_framework import views, generics, permissions
 from rest_framework.response import Response
+from rest_framework_simplejwt.authentication import JWTAuthentication
 
 from .serializers import UsersSerializer, LoginSerializer
 
@@ -46,5 +47,10 @@ class RegisterView(generics.CreateAPIView):
 
 
 class CurrentUserView(views.APIView):
+    permission_classes = (permissions.IsAuthenticated,)
+    authentication_classes = (JWTAuthentication, )
+
     def get(self, request):
-        return Response({"current_user": str(self.request.user)})
+        return Response({
+            'data': UsersSerializer(request.user).data
+        })
