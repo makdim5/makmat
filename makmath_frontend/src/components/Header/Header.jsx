@@ -1,24 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import cl from "./Header.module.css"
 import logo from "../../pages/AuthorizationPage/logo.png";
+import {NavLink} from "react-router-dom";
 
 const Header = () => {
+
+    const [access, setAccess] = useState(localStorage.getItem('accessToken'))
     return (
         <header className={cl.header}>
             <div className={cl.wrap_logo}>
                 <div className={cl.img_block}>
                     <img src={logo} alt="MakMath logo"/>
                 </div>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className={cl.logo}>MakMath 2.0</a>
+                <NavLink to="/" className={cl.logo}>MakMath 2.0</NavLink>
             </div>
             <nav className={cl.nav}>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a className={cl.active} href="#">Главная</a>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="\login">Войти</a>
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="#">О сайте</a>
+                <NavLink className={cl.active} to="#">Главная</NavLink>
+
+                {access !== ""
+                    ?
+                    < NavLink to="/" onClick={() => { localStorage.setItem('accessToken', ""); window.location.reload() }} >Выйти</NavLink>
+                    :
+                    <NavLink to="/login">Войти</NavLink>
+                }
+                <NavLink to="#">О сайте</NavLink>
             </nav>
         </header>
     );

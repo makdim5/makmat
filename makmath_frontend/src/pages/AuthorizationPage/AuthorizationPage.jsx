@@ -3,6 +3,7 @@ import {Button, IconButton, InputAdornment, TextField} from "@mui/material";
 import logo from "./logo.png"
 import cl from "./AuthorizationPage.module.css"
 import {Visibility, VisibilityOff} from "@mui/icons-material";
+import MyModal from "../../components/MyModal/MyModal";
 
 
 const AuthorizationPage = () => {
@@ -14,6 +15,9 @@ const AuthorizationPage = () => {
     const [formUsername, setFormUsername] = useState()
     const [formPassword, setFormPassword] = useState()
     const [error, setError] = useState()
+
+    const [modal, setModal] = useState(false);
+    const [modalMsg, setModalMsg] = useState();
 
     // Add these variables to your component to track the state
     const [showPassword, setShowPassword] = useState(false);
@@ -45,13 +49,17 @@ const AuthorizationPage = () => {
             }).then(({data}) => {
                 console.log(data)
 
-                alert(`${data.username}, вы вошли успешно!`)
-                // window.location.href = "/"
+                setModalMsg(`${data.username}, вы вошли успешно!`)
+                setModal(true);
+
+                window.location.href = "/"
             }).catch(error => {
                 if (error.message === 'refresh') {
                     setRefreshRequired(true)
                 } else {
-                    console.log(error)
+                    // console.log(error)
+                    setModalMsg(error.toString())
+                    setModal(true);
                     setError('Ошибка, подробности в консоли')
                 }
             })
@@ -86,6 +94,8 @@ const AuthorizationPage = () => {
                 })
                 .catch(error => {
                     console.log(error)
+                    setModalMsg(error.toString())
+                    setModal(true);
                     setError('Ошибка, подробности в консоли')
                 })
         }
@@ -120,13 +130,15 @@ const AuthorizationPage = () => {
             setError(null)
 
         }).catch(error => {
-            console.log(error)
+            setModalMsg(error.toString())
+            setModal(true);
             setError('Ошибка, подробности в консоли')
         }).finally(setLoading(false))
     }
 
     return (
         <div className={cl.auth_body}>
+            <MyModal visible={modal} setVisible={setModal}><div>{modalMsg}</div></MyModal>
 
             <div className={cl.area}>
                 <div className={cl.img_block}>
